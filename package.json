@@ -2,7 +2,7 @@
   "name": "nodeapi",
   "version": "0.0.0",
   "description": "Node project boilerplate for COINS",
-  "main": "index.js",
+  "main": "server.js",
   "directories": {
     "test": "test"
   },

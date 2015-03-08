@@ -13,7 +13,7 @@ var apiKey = config.get('m2x.apiKey');
 
 var server = new hapi.Server();
 
-server.connection({ port: 3000 });
+server.connection({ port: process.env.PORT || 3000});
 
 var options = {
     reporters: [{
