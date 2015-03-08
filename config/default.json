@@ -1,4 +1,37 @@
 {
-    "required": "I am required",
-    "optional": "I am optional"
+    "m2x": {
+        "urlSeed": "https://api-m2x.att.com/v2/devices",
+        "deviceId": "1c4a3f699274e6312a5565d262a5e6b2",
+        "streams": [
+            {
+                "id": "doorOpen",
+                "label": "Door State"
+            },
+            {
+                "id": "temperatureC",
+                "label": "Coop Temperature"
+            },
+            {
+                "id": "batteryVoltage",
+                "label": "Battery Voltage"
+            },
+            {
+                "id": "aok",
+                "label": "Heartbeat"
+            }
+        ],
+        "apiKey": "a5b5fa7d7876a642468f0b6336587ca9"
+    },
+    "twilioCredentials": {
+        "sid": "ACe7677a530313d224434b4c46ac031a9d",
+        "token": "1f84fad04e1e91fe3301c3047c5aec64",
+        "from": 5034967581
+    },
+    "test": {
+        "smsRecipients": [
+            5054805346,
+            9712224968,
+            5036472060
+        ]
+    }
 }
