@@ -3,8 +3,20 @@
 (function(global) {
     // Set up websocket
     var socket = io();
-    socket.on('welcome', function(data) { alert('welcome received'); });
+    socket.on('welcome', function(data) {
+        alert('socket connected');
+        if (data.monitorConnected) {
+            updateMonitorState(true);
+        } else {
+            updateMonitorState(false);
+        }
+    });
     socket.on('coopStateChanged', getLatestState);
+    socket.on('monitorConnected', function() {updateMonitorState(true)});
+    socket.on('monitorDisconnected', function() {upateMonitorState(false)});
+    socket.on('messageConfirmation', function(data){
+        alert('message received: ' + data.message);
+    });
     // Set up m2x 
     var fakeKey = '122lkjklsalskdfja';
     var m2x = new M2X(fakeKey);
@@ -34,6 +46,10 @@
             .catch(function(err) {
                 alert('Error retrieving m2x endpoints');
             });
+    };
+
+    var updateMonitorState = function(state) {
+        $('[data-hook=monitorState]').html(state ? 'Connected' : 'Disconnected');
     };
 
     var getLatestState = function(callback) {

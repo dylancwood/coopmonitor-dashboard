@@ -52,18 +52,29 @@ var ioHandler = function (socket) {
     var handleDoorActionRequest = function(data) {
         console.log('doorChangePlease received');
         console.dir(data);
-        socket.broadcast('doorChangePlease', data);
+        socket.broadcast.emit('doorChangePlease', data);
+        socket.emit('messageConfirmation', {message: 'doorChangePlease'});
     };
 
     //handle state change notice
     var handleStateChangeNotice = function(data) {
         console.log('coopStateChanged received');
-        socket.broadcast('coopStateChanged', {});
+        socket.broadcast.emit('coopStateChanged', {});
+    };
+
+    var handleMonitorConnect = function(data) {
+        monitorConnected = true;
+        socket.isMonitor = true;
+        socket.broadcast.emit('monitorConnected');
     };
 
     socket.on('ping', pingHandler);
     socket.on('doorChangePlease', handleDoorActionRequest);
     socket.on('coopStateChanged', handleStateChangeNotice);
+    socket.on('monitorConnected', handleMonitorConnect);
+    socket.on('close', function() {
+        socket.broadcast('monitorDisconnected');
+    });
 };
 
 io.on('connection', ioHandler)
