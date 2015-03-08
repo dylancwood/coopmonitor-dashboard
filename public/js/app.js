@@ -19,7 +19,7 @@
 
     var init = function() {
         retrieveM2XConfig()
-            .then(getLatest);
+            .then(getLatestState);
         $('[data-hook=doorStateToggle]').on('click', function() {
             var action = coopState.doorOpen ? 'close' : 'open';
             socket.emit('doorChangePlease', {action: action});
