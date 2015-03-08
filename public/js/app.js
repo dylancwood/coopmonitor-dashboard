@@ -52,7 +52,8 @@
         $('[data-hook=monitorState]').html(state ? 'Connected' : 'Disconnected');
     };
 
-    var getLatestState = function(callback) {
+    var getLatestState = function() {
+        console.log('getting latest state');
         var promises = m2xConfig.streams.map(function(stream) {
             return new Promise(function (resolve, reject) { 
                 return m2x.devices.streamValues(m2xConfig.deviceId, stream.id, {limit:1}, resolve, reject);
