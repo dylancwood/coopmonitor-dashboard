@@ -54,6 +54,7 @@ var ioHandler = function (socket) {
         console.dir(data);
         socket.broadcast.emit('doorChangePlease', data);
         socket.emit('messageConfirmation', {message: 'doorChangePlease'});
+        process.nextTick(function() { socket.emit('coopStateChanged', {}); } );
     };
 
     //handle state change notice
