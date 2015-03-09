@@ -11,7 +11,10 @@
             updateMonitorState(false);
         }
     });
-    socket.on('coopStateChanged', getLatestState);
+    socket.on('coopStateChanged', function() { 
+        console.log('coopStateChanged');
+        getLatestState();
+    });
     socket.on('monitorConnected', function() {updateMonitorState(true)});
     socket.on('monitorDisconnected', function() {upateMonitorState(false)});
     socket.on('messageConfirmation', function(data){
@@ -35,6 +38,7 @@
         $('[data-hook=doorStateToggle]').on('click', function() {
             var action = coopState.doorOpen ? 'close' : 'open';
             socket.emit('doorChangePlease', {action: action});
+            global.setTimeout(2000, getLatestState);
         });
     };
     
