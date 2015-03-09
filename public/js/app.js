@@ -79,7 +79,14 @@
         } else {
             coopState[stream.id] = 'N/A';
         }
-        $('[data-hook=' + stream.id + ']').html(stream.label + ':' + coopState[stream.id]);
+        var value = coopState[stream.id];
+        if (stream.id === 'doorOpen') {
+            value = value ? 'Open' : 'Shut';
+        }
+        if (stream.id === 'batteryVoltage') {
+            value = parseInt(value) + '%';
+        }
+        $('[data-hook=' + stream.id + ']').html(stream.label + ': ' + value);
     };
     
     global.document.addEventListener('DOMContentLoaded', init);
