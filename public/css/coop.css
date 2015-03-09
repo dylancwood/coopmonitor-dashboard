@@ -1,0 +1,23 @@
+body {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin: 2em;
+    padding: 2em;
+    background-color: rgba(100, 100, 100, 0.2);
+    text-align: center;
+}
+
+input {
+    display:block;
+    margin: 2em;
+    padding: 2em;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -12,6 +12,8 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/coop.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
@@ -26,15 +28,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"></script>
         <script src="https://cdn.jsdelivr.net/rsvp/3.0/rsvp.min.js"></script>
         <script src="js/app.js"></script>
-        <h2>Coop Monitor</h2>
-        <ul id="coop_sate">
-            <li data-hook="doorOpen"></li>
-            <li data-hook="temperatureC"></li>
-            <li data-hook="batteryVoltage"></li>
-        </ul>
-        <input type="button" value="Open/Close Door" data-hook="doorStateToggle" />
-        <label>Monitor State:</label>
-        <span data-hook="monitorState"></span>
+        <img src="/images/cock.png" width="75px"></img>
+        <h1>Coop Monitor</h1>
+        <div class="alert alert-info" data-hook="doorOpen"></div>
+        <div class="alert alert-info" data-hook="temperatureC"></div>
+        <div class="alert alert-info" data-hook="batteryVoltage"></div>
+        <input type="button" class="btn btn-primary" value="Open/Close Door" data-hook="doorStateToggle" />
     </body>
 </html>
 
